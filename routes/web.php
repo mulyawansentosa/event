@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('v1.auth.login');
+});
+
+Route::group(['prefix' => 'admin'],function(){
+    Route::group(['prefix' => 'v1'],function(){
+        Route::get('/dashboard', function () {
+            return view('v1.organizer.organizer_index');
+        })->name('admin.v1.dashboard');
+    });
 });
